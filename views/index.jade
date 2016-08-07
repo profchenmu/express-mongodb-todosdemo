@@ -1,0 +1,24 @@
+extends layout
+
+block content
+	h1= title
+	form.todo-input
+		input.tonggle-all(type='checkbox' name='toggleall' checked)
+		label(for='toggleall') Show All
+		-for(var i=0; i<todoList.length; i++){			
+			if todoList[i].itemDone==='1'
+				.item-group(class='done' data-_id='#{todoList[i].id}')
+					input.todo-done(type='checkbox' value=1 name='todo-done' checked)
+					input.todo-item(class='disactive done' value='#{todoList[i].todoName}' type='text' disabled)
+					a.item-remove(href='javascript:;') remove
+			else
+				.item-group(data-_id='#{todoList[i].id}')
+					input.todo-done(type='checkbox' value=1 name='todo-done')
+					input.todo-item(class='disactive undone' value='#{todoList[i].todoName}' type='text')
+					a.item-remove(href='javascript:;') remove
+		-}
+		input.todo-name(type='text' name='todoname')
+		a.btn(href='javascript:;') Add
+	script(type='text/javascript' src='/javascripts/jquery.js')
+	script(type='text/javascript' src='/javascripts/index.js')
+  
