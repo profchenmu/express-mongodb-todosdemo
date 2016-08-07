@@ -19,4 +19,4 @@ var todoSchema = new mongoose.Schema({
 	update: {type: Date, default: Date.now()},
 	itemDone: {type: String}
 });
-mongoose.model('Todo', todoSchema);
+module.exports = mongoose.model('Todo', todoSchema);
