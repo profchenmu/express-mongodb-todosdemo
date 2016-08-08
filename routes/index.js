@@ -1,7 +1,9 @@
+'use strict';
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-var Todo = mongoose.model('Todo')
+
+var Todo = mongoose.model('Todo');
 
 router.get('/', function(req, res, next) {
 	Todo.find({}, '_id todoName itemDone', function(err, todo){
@@ -16,7 +18,7 @@ router.post('/', function(req, res, next) {
 	Todo.create({
 		todoName: req.body.todoname
 	}, function(err, todo){
-		res.json({cao: 'cao'});
+		res.json(todo);
 	});
 });
 
@@ -40,7 +42,7 @@ router.put('/itemname', function(req, res, next) {
 				todoName: req.body.todoname
 			}
 		},function(err, todo){
-			res.json({cao: 'cao2'});
+			res.json(todo);
 		}
 	)
 });
@@ -55,7 +57,7 @@ router.put('/itemdone', function(req, res, next) {
 				itemDone: req.body.itemdone
 			}
 		},function(err, todo){
-			res.json({cao: 'cao3'});
+			res.json(todo);
 		}
 	)
 });

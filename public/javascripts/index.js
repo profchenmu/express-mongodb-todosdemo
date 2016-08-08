@@ -1,3 +1,4 @@
+'use strict';
 $('.btn').on('click', function(event) {
 	event.preventDefault();
 	var todoName = $('.todo-name').val();
@@ -6,8 +7,15 @@ $('.btn').on('click', function(event) {
 		type: 'POST',
 		dataType: 'json',
 		data: {todoname: todoName},
-		success: function(){
-			console.log('cao')
+		success: function(msg){
+			console.log(msg);
+			window.location.reload();
+			// var tpl = '<div data-_id="' + msg._id + '" class="item-group">' + 
+			// 	'<input type="checkbox" value="1" name="todo-done" class="todo-done">' + 
+			// 	'<input value="'+ todoName + '" type="text" class="todo-item disactive undone">' +
+			// 	'<a href="javascript:;" class="item-remove">remove</a></div>'
+			// $('.item-group').first().before(tpl);
+			// $('.todo-name').val('');
 		}
 	});
 });
