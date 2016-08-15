@@ -20,3 +20,24 @@ var todoSchema = new mongoose.Schema({
 	itemDone: {type: String}
 });
 mongoose.model('Todo', todoSchema);
+
+var mysql = require('mysql');
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  database : 'WDI'
+});
+
+connection.connect(function(err){
+	if(err){
+		console.log('error: ' + err.stack);
+	}
+	console.log('connected as id ' + connection.threadId);
+});
+
+connection.query('select `Country Name`,`id` from `WDI`.`WDI_Data`  limit 0,5', function(err, rows, fields){
+	if(err) throw err;
+	console.log(rows[0]);
+});
+
+

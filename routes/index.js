@@ -9,6 +9,12 @@ router.get('/', function(req, res, next) {
 			todoList: todo,
 			title: 'TODO DEMO'
 		});
+		res.json(todo);
+	});
+});
+router.get('/index', function(req, res, next) {
+	Todo.find({}, '_id todoName itemDone', function(err, todo){
+		res.json(todo);
 	});
 });
 
