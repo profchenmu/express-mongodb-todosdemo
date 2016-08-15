@@ -1,3 +1,4 @@
+'use strict';
 var mongoose = require('mongoose');
 var dbURI = 'mongodb://127.0.0.1/todos';
 
@@ -19,6 +20,7 @@ var todoSchema = new mongoose.Schema({
 	update: {type: Date, default: Date.now()},
 	itemDone: {type: String}
 });
+
 mongoose.model('Todo', todoSchema);
 
 var mysql = require('mysql');
