@@ -11,7 +11,6 @@ router.get('/', function(req, res, next) {
 			todoList: todo,
 			title: 'TODO DEMO'
 		});
-		res.json(todo);
 	});
 });
 router.get('/index', function(req, res, next) {
