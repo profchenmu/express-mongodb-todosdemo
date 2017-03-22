@@ -5,14 +5,14 @@ var Todo = mongoose.model('Todo')
 
 router.get('/', function(req, res, next) {
 	Todo.find({}, '_id todoName itemDone', function(err, todo){
-		res.render('index', { 
+		res.render('index', {
 			todoList: todo,
 			title: 'TODO DEMO'
 		});
 	});
 });
 
-router.post('/', function(req, res, next) {
+router.post('/add', function(req, res, next) {
 	Todo.create({
 		todoName: req.body.todoname
 	}, function(err, todo){
